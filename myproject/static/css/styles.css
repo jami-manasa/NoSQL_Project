@@ -1,0 +1,415 @@
+/* 🌐 Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F1F1F2; /* Light Gray */
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 🔷 Primary Theme Colors */
+.bg-primary {
+    background-color: #A1D6E2 !important; /* Light Blue */
+    text-align: center;
+    color: white;
+}
+
+/* 🌿 Logo */
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+/* 🏠 Image Styling */
+.auth-image, .home-image {
+    width: 80%;
+    max-width: 300px;
+}
+
+/* 🔹 Form Container */
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 🏷 Headings */
+h3 {
+    margin-bottom: 20px;
+    color: #333; /* Dark Gray */
+}
+
+/* 🖊 Form Fields */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333; /* Dark Gray */
+}
+
+.input-group input,
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #F1F1F2; /* Light Gray */
+}
+
+/* 👁 Password Field */
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* 🔘 Primary Button (Teal Blue) */
+.btn-primary {
+    background: #1995AD; /* Teal Blue */
+    border: none;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #14778E; /* Slightly Darker Teal */
+}
+
+/* 🌿 Outlined Button (Light Blue) */
+.btn-outline-primary {
+    border: 2px solid #A1D6E2; /* Light Blue */
+    color: #1995AD;
+    background: white;
+    transition: 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background: #A1D6E2;
+    color: white;
+}
+
+/* 📌 Links */
+.register-link,
+p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333; /* Dark Gray */
+}
+
+/* 🌐 Home Page Image */
+.home-image {
+    width: 80%;
+    max-width: 300px;
+}
+
+/* 🏆 Signup Page Heading */
+.bg-primary h2 {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 🔘 Home Page Buttons */
+.btn {
+    min-width: 120px;
+    font-size: 16px;
+}
+
+/* 📱 Responsive Forms */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+}
+
+
+/* 🌐 Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F1F1F2; /* Match Signup/Login Theme */
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    transition: background 0.3s ease-in-out;
+}
+
+/* 🚀 Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh; /* Full height */
+    background: #A1D6E2; /* Light Blue */
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px 15px;
+    transition: width 0.3s ease-in-out;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 📌 Sidebar Collapsed */
+.sidebar.collapsed {
+    width: 70px;
+}
+
+/* Hide text when sidebar is collapsed */
+.sidebar.collapsed ul li a span {
+    display: none;
+}
+
+/* Adjust icons when collapsed */
+.sidebar.collapsed ul li i {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 🚀 Sidebar Toggle Button (Inside Sidebar) */
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    align-self: flex-start; /* Align to left */
+}
+
+/* 🎭 Profile Section */
+.sidebar .profile {
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar .profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.sidebar .profile h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sidebar .profile p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+
+/* 📌 Sidebar Links */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+}
+
+.sidebar ul li i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+/* 🌙 Dark Mode */
+body.dark-mode {
+    background-color: #181818;
+    color: white;
+}
+
+.sidebar.dark {
+    background: #1A1C29;
+    color: white;
+}
+
+.sidebar.dark ul li:hover {
+    background: #2A2D40;
+}
+
+/* 🌙 Dark Mode Toggle (Modern Switch) */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+/* Switch Container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+/* Hidden Checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+/* Circle inside switch */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Dark Mode: Switch On */
+input:checked + .slider {
+    background-color: #1995AD; /* Teal Blue */
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+/* 🌿 Adjust Content when Sidebar is Collapsed */
+.content {
+    margin-left: 280px;
+    padding: 40px;
+    flex-grow: 1;
+    width: 100%;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+
+
+.content.collapsed {
+    margin-left: 100px;
+}
+
+/* 📱 Responsive Sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+}
+
+/* Logout Popup Styling */
+.logout-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ✅ Centering Trick */
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+    min-width: 300px; /* ✅ Ensure minimum width */
+}
+
+/* Popup Content */
+.logout-popup-content {
+    padding: 50px;
+}
+
+/* Logout Confirmation Text */
+.logout-popup p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Buttons */
+.logout-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logout-popup button {
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Yes Button */
+#logout-yes {
+    background: #1995AD;
+    color: white;
+}
+
+#logout-yes:hover {
+    background: #137891;
+}
+
+/* No Button */
+#logout-no {
+    background: #ccc;
+    color: black;
+}
+
+#logout-no:hover {
+    background: #bbb;
+}
+
+
+
+
+/* chatbot */
