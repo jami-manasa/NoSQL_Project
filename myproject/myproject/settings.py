@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,16 +87,19 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'mydatabase',
+        'NAME': config('DB_NAME'),
         'CLIENT': {
-            'host': 'mongodb://localhost:27017/',
-            
+            'host': f"mongodb+srv://{config('DB_USER')}:{config('DB_PASS')}@cluster0.z288x92.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+            'username': config('DB_USER'),
+            'password': config('DB_PASS'),
         }
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
