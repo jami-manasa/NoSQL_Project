@@ -9,11 +9,13 @@
 </head>
 <body>
   <div class="login-container">
+    <!-- Left Side -->
     <div class="login-left">
         <img src="{% static 'images/mule.png' %}" alt="Logo" class="logo">
         <img src="{% static 'images/uni.png' %}" alt="UCM Campus" class="auth-image">
     </div>
 
+    <!-- Right Side -->
     <div class="login-right">
       <h2>Login</h2>
       <form method="POST">
@@ -34,6 +36,11 @@
       </form>
     </div>
   </div>
+
+  <!-- 📌 Footer -->
+  <footer class="login-footer">
+    &copy; 2025 University of Central Missouri | Built with ❤️ by MuleConnect Team
+  </footer>
   <script defer src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

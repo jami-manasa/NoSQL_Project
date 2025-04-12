@@ -13,77 +13,77 @@
   
   body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(120deg, var(--rose), var(--ivory));
-    height: 100vh;
-    width: 100vw;
+    background: linear-gradient(120deg, var(--rose), var(--ivory)); /* Unified background */
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
   }
   
-  /* ✅ FULLSCREEN Login Container */
   .login-container {
     display: flex;
+    flex: 1;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
   }
   
-  /* 🎨 Left Side */
+  /* Left Side */
   .login-left {
     flex: 1;
-    background-color: var(--rose);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
     padding: 2rem;
+    background: transparent; /* Remove distinct color */
   }
   
   .logo {
-    width: 120px;
-    margin-bottom: 2rem;
+    width: 110px;
+    margin-bottom: 1rem;
   }
   
   .auth-image {
     width: 90%;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   }
   
-  /* 🎨 Right Side */
+  /* Right Side */
   .login-right {
     flex: 1;
-    background: white;
     padding: 3rem 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+    background: transparent; /* Unified background */
+    box-shadow: none;        /* Remove any right-side shadow */
   }
   
   h2 {
-    font-size: 2rem;
-    color: var(--scarlet);
     text-align: center;
+    color: var(--scarlet);
     margin-bottom: 2rem;
   }
   
   .input-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
   }
   
   .input-group label {
-    font-weight: 600;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
   }
   
   .input-group input {
     width: 100%;
     padding: 0.9rem;
-    border-radius: 8px;
-    border: 2px solid #f5c8c8;
+    border-radius: 10px;
     background: #fff4f2;
+    border: 2px solid #f2c0c0;
     font-size: 1rem;
-    transition: border 0.3s ease;
+    transition: border-color 0.3s ease;
   }
   
   .input-group input:focus {
@@ -103,52 +103,244 @@
     cursor: pointer;
   }
   
-  /* ✨ Button Styling */
+  /* Button */
   .btn-primary {
-    background: linear-gradient(135deg, #c6483d, #b43930);
+    background: linear-gradient(135deg, #c6483d, var(--scarlet));
     color: white;
-    padding: 1rem;
-    font-size: 1rem;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
+    padding: 1rem;
+    font-size: 1rem;
     width: 100%;
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(180, 57, 48, 0.2);
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, #d85f57, #b43930);
     transform: scale(1.02);
+    background: linear-gradient(135deg, #d85f57, var(--scarlet));
   }
   
-  /* 👣 Signup link */
+  /* Sign up */
   .signup-link {
-    margin-top: 1.5rem;
     text-align: center;
-    font-size: 0.95rem;
+    margin-top: 1.5rem;
   }
   
   .signup-link a {
-    color: var(--scarlet);
-    font-weight: 600;
     text-decoration: none;
+    color: var(--scarlet);
+    font-weight: bold;
   }
   
   .signup-link a:hover {
     text-decoration: underline;
   }
   
-  /* 📱 Responsive */
+  /* Footer */
+  .login-footer {
+    text-align: center;
+    padding: 16px;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  
+  /* Responsive */
   @media (max-width: 768px) {
     .login-container {
       flex-direction: column;
     }
   
     .login-left, .login-right {
-      flex: unset;
       width: 100%;
       padding: 2rem;
     }
+  
+    .auth-image {
+      width: 100%;
+    }
   }
-   
+  
+
+
+
+
+
+
+/* home page */
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #fbe5e0, #fdfaf7);
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #b43930;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #b43930;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #b43930;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.cta-btn {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background-color: #b43930;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.posts-container {
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* Floating Button */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  background: #b43930;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* 🧠 Chatbot UI */
+.chatbot {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+}
+
+.chat-icon {
+  background: #b43930;
+  color: white;
+  font-size: 1.5rem;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+
+.chat-window {
+  display: none;
+  flex-direction: column;
+  width: 300px;
+  height: 380px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Chat header */
+.chat-header {
+  background: #b43930;
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Chat body */
+.chat-body {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #444;
+  margin-top: 4rem;
+}
