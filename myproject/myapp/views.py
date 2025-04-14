@@ -3,10 +3,29 @@ from django.contrib.auth.models import User  # Keep only this import for User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from .models import CommunityPost
+from . import views
+from django.core.paginator import Paginator
 # ✅ Home View
+
+
+
 def home(request):
-    return render(request, 'myapp/home.html')
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        image = request.FILES.get('image')
+        username = request.user.username if request.user.is_authenticated else 'Anonymous'
+        CommunityPost.objects.create(username=username, content=content, image=image)
+        return redirect('home')
+
+    # Paginate posts (2 per page)
+    posts_list = CommunityPost.objects.all().order_by('-timestamp')
+    paginator = Paginator(posts_list, 2)  # Change '2' to how many posts per page you want
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
+    return render(request, 'myapp/home.html', {'posts': posts})
+
 
 # ✅ Signup View
 def signup(request):
@@ -14,31 +33,25 @@ def signup(request):
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        User.objects.create_user(username=username, email=email, password=password)
+        return redirect('login')
 
-        # Create user with hashed password
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
+    return render(request, 'myapp/auth.html', {'mode': 'signup'})
 
-        return redirect('login')  # Redirect to login page
 
-    return render(request, 'myapp/signup.html')  # Render the signup template
-
-# ✅ Login View
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
-        # Authenticate user
         user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)  # Log the user in
-            return redirect('dashboard')  # Redirect to dashboard
+        if user:
+            login(request, user)
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid username or password')
 
-    return render(request, 'myapp/login.html')
+    return render(request, 'myapp/auth.html', {'mode': 'login'})
+
 
 # ✅ Logout View
 def logout_view(request):

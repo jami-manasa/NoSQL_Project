@@ -17,63 +17,117 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#stories">Stories</a></li>
       <li><a href="#mentorship">Mentorship</a></li>
-      <li><a href="#jobs">Jobs</a></li>
+      <li><a href="{% url 'signup' %}">SignUp</a></li>
       <li><a href="#events">Events</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <header id="hero" class="hero">
-    <h1>Welcome to MuleConnect</h1>
-    <p>Where UCM students & alumni share, grow, and thrive together.</p>
-    <a href="#stories" class="cta-btn">Explore Stories</a>
+  <!-- Hero Section with Background -->
+  <header id="hero" class="hero-section">
+    
+    <div class="hero-overlay">
+      <h1>Welcome to MuleConnect</h1>
+      <p>Where UCM students & alumni share, grow, and thrive together.</p>
+      <a  href="{% url 'signup' %}" class="cta-btn">Join Our Community</a>
+    </div>
   </header>
 
-  <!-- Community Wall -->
-  <section id="stories" class="section">
-    <h2>Community Wall</h2>
-    <p>Real experiences from the UCM community. Share your story!</p>
-    <div class="posts-container" id="postsContainer">
-      <!-- Posts will be dynamically loaded -->
+<!-- 
+  <header id="hero" class="hero-video-section">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="{% static 'videos/ucm_hero.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h1>Welcome to MuleConnect</h1>
+      <p>Where UCM students & alumni share, grow, and thrive together.</p>
+      <a href="#stories" class="cta-btn">Explore Stories</a>
     </div>
-  </section>
-
-  <!-- Mentorship -->
-  <section id="mentorship" class="section">
-    <h2>Mentorship</h2>
-    <p>Connect with mentors and mentees to grow your career journey.</p>
-  </section>
-
+  </header> -->
   
 
-  <!-- Jobs -->
-  <section id="jobs" class="section">
-    <h2>Job Opportunities</h2>
-    <p>Find internships, job openings, or share an opportunity.</p>
-  </section>
+  <!-- Community Wall -->
+<!-- Community Wall -->
+<section id="stories" class="section community-wall">
+  <h2>Community Wall</h2>
+  <p class="subtitle">Real experiences from the UCM community. Share your story!</p>
 
-  <!-- Events -->
-  <section id="events" class="section">
-    <h2>Events</h2>
-    <p>Attend webinars, alumni talks, or upcoming meetups.</p>
-  </section>
+  <!-- Post Submission Form -->
+  <form method="POST" enctype="multipart/form-data" class="post-form">
+    {% csrf_token %}
+    <textarea name="content" placeholder="What's on your mind, Mule?" required></textarea>
+    <div class="post-actions">
+      <input type="file" name="image" accept="image/*" />
+      <button type="submit" class="btn-post">Post</button>
+    </div>
+  </form>
 
-  <!-- Floating Post Button
-  <button class="fab" onclick="openPostModal()" title="Share Your Story">
-    <i class="fas fa-pen"></i>
+  <!-- Posts Display -->
+  <div class="posts-container">
+    {% for post in posts %}
+      <div class="post-card">
+        <div class="post-header">
+          <strong>@{{ post.username }}</strong>
+          <span>• {{ post.timestamp|timesince }} ago</span>
+        </div>
+        <p>{{ post.content }}</p>
+        {% if post.image %}
+          <img src="{{ post.image.url }}" alt="Post image" />
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No posts yet. Be the first to share something!</p>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+    {% if posts.has_previous %}
+      <a href="?page={{ posts.previous_page_number }}" class="pagination-btn">« Previous</a>
+    {% endif %}
+    <span>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+    {% if posts.has_next %}
+      <a href="?page={{ posts.next_page_number }}" class="pagination-btn">Next »</a>
+    {% endif %}
+  </div>
+</section>
+
+  
+<!-- Connect Sections -->
+<section class="connect-section">
+  <div class="card-container">
+
+    <!-- Mentorship Card -->
+    <div class="info-card">
+      <h3>🤝 Mentorship</h3>
+      <p>Connect with mentors and mentees to grow your career journey.</p>
+    </div>
+
+    <!-- Jobs Card -->
+    <div class="info-card">
+      <h3>💼 Job Opportunities</h3>
+      <p>Find internships, job openings, or share an opportunity with the community.</p>
+    </div>
+
+    <!-- Events Card -->
+    <div class="info-card">
+      <h3>📅 Events</h3>
+      <p>Attend webinars, alumni talks, and upcoming meetups around UCM.</p>
+    </div>
+
+  </div>
+</section>
 
 
-  </button> -->
-
-  Chatbot
+  <!-- Chatbot -->
   <div class="chatbot">
     <div class="chat-icon" onclick="toggleChat()">
-      <i class="fas fa-comment-dots"></i> <!-- For chatbot -->
+      <i class="fas fa-comment-dots"></i>
     </div>
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
         <span>MuleBot</span>
-        <button onclick="toggleChat()">  ×  </button>
+        <button onclick="toggleChat()">×</button>
       </div>
       <div class="chat-body">
         <p>Hi 👋 I'm here to help with anything MuleConnect related.</p>
