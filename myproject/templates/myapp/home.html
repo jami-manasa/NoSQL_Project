@@ -14,7 +14,7 @@
   <nav class="navbar">
     <div class="logo">MuleConnect</div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
+      <li><a href="#hero">Home</a></li>
       <li><a href="#stories">Stories</a></li>
       <li><a href="#mentorship">Mentorship</a></li>
       <li><a href="#jobs">Jobs</a></li>
@@ -23,65 +23,70 @@
   </nav>
 
   <!-- Hero Section -->
-  <header class="hero">
+  <header id="hero" class="hero">
     <h1>Welcome to MuleConnect</h1>
     <p>Where UCM students & alumni share, grow, and thrive together.</p>
     <a href="#stories" class="cta-btn">Explore Stories</a>
   </header>
 
-  <!-- Experience Wall Section -->
+  <!-- Community Wall -->
   <section id="stories" class="section">
     <h2>Community Wall</h2>
-    <p>Read or share real stories, thoughts, and advice from peers.</p>
+    <p>Real experiences from the UCM community. Share your story!</p>
     <div class="posts-container" id="postsContainer">
-      <!-- Dynamic posts will appear here -->
+      <!-- Posts will be dynamically loaded -->
     </div>
   </section>
 
-  <!-- Mentorship, Jobs, Events Placeholder -->
+  <!-- Mentorship -->
   <section id="mentorship" class="section">
     <h2>Mentorship</h2>
-    <p>Find mentors or offer guidance.</p>
+    <p>Connect with mentors and mentees to grow your career journey.</p>
   </section>
 
-  <section id="jobs" class="section">
-    <h2>Job Board</h2>
-    <p>Discover job and internship opportunities shared by alumni.</p>
-  </section>
-
-  <section id="events" class="section">
-    <h2>Upcoming Events</h2>
-    <p>Stay updated on alumni meetups and professional webinars.</p>
-  </section>
-
-  <!-- Floating Share Button -->
-  <button class="fab" onclick="openPostModal()">
-    <i class="fas fa-pen"></i>
-  </button>
   
-<!-- 🔘 Chatbot UI -->
-<div class="chatbot">
+
+  <!-- Jobs -->
+  <section id="jobs" class="section">
+    <h2>Job Opportunities</h2>
+    <p>Find internships, job openings, or share an opportunity.</p>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="section">
+    <h2>Events</h2>
+    <p>Attend webinars, alumni talks, or upcoming meetups.</p>
+  </section>
+
+  <!-- Floating Post Button
+  <button class="fab" onclick="openPostModal()" title="Share Your Story">
+    <i class="fas fa-pen"></i>
+
+
+  </button> -->
+
+  Chatbot
+  <div class="chatbot">
     <div class="chat-icon" onclick="toggleChat()">
-      <i class="fas fa-comment-dots"></i>
+      <i class="fas fa-comment-dots"></i> <!-- For chatbot -->
     </div>
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
-        <span>Chat with MuleBot</span>
-        <button onclick="toggleChat()">×</button>
+        <span>MuleBot</span>
+        <button onclick="toggleChat()">  ×  </button>
       </div>
       <div class="chat-body">
-        <p>Hello 👋 I'm here to help! Ask me anything about MuleConnect.</p>
-        <!-- You can add input + send button here later -->
+        <p>Hi 👋 I'm here to help with anything MuleConnect related.</p>
+        <p>Ask about stories, jobs, events, or how to connect with alumni.</p>
       </div>
     </div>
   </div>
-  
 
   <!-- Footer -->
   <footer>
     © 2025 University of Central Missouri | Built with ❤️ by MuleConnect Team
   </footer>
-</footer>
-<script defer src="{% static 'js/script.js' %}"></script>
+
+  <script defer src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

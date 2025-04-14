@@ -11,6 +11,11 @@ function togglePassword() {
   }
   
   function openPostModal() {
-    alert("Open modal to submit a story/post/photo/video.");
+    document.getElementById("postModal").style.display = "flex";
   }
+  
+  function closePostModal() {
+    document.getElementById("postModal").style.display = "none";
+  }
+  
   
