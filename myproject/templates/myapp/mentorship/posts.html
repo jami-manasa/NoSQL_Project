@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Mentorship Opportunities</h2>
+
+  <style>
+    .section-title {
+      color: #4CAF50;
+      margin-top: 30px;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 5px;
+    }
+    .post-card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+    .btn-request {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!-- 👨‍🏫 Mentorship Offers -->
+  <h3 class="section-title">🧑‍🏫 Mentorship Offers (Alumni / Professionals)</h3>
+  {% for post in offers %}
+    <div class="post-card">
+      <h4>{{ post.title }}</h4>
+      <p><strong>Expertise:</strong> {{ post.expertise_area }}</p>
+      <p>{{ post.description }}</p>
+      <p><em>By {{ post.username }} | {{ post.timestamp }}</em></p>
+
+      <form method="post" action="{% url 'send_request' %}">
+        {% csrf_token %}
+        <input type="hidden" name="mentor" value="{{ post.username }}">
+        <input type="text" name="message" placeholder="Add a message" required>
+        <button type="submit" class="btn-request">Request Mentorship</button>
+      </form>
+    </div>
+  {% empty %}
+    <p>No mentorship offers available.</p>
+  {% endfor %}
+
+  <!-- 🙋‍♀️ Mentorship Requests -->
+  <h3 class="section-title">🙋‍♀️ Mentorship Requests (From Students)</h3>
+  {% for post in requests %}
+    <div class="post-card">
+      <h4>{{ post.title }}</h4>
+      <p><strong>Looking for:</strong> {{ post.expertise_area }}</p>
+      <p>{{ post.description }}</p>
+      <p><em>By {{ post.username }} | {{ post.timestamp }}</em></p>
+    </div>
+  {% empty %}
+    <p>No mentorship requests yet.</p>
+  {% endfor %}
+
+{% endblock %}

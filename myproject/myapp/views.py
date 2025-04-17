@@ -6,6 +6,15 @@ from django.contrib.auth.decorators import login_required
 from .models import CommunityPost
 from . import views
 from django.core.paginator import Paginator
+
+from django.shortcuts import render, redirect
+from .forms import MentorshipPostForm
+from .models import MentorshipPost
+
+from django.http import HttpResponseRedirect
+from .models import MentorshipRequest
+
+
 # ✅ Home View
 
 
@@ -77,3 +86,44 @@ def settings(request):
 @login_required
 def reports(request):
     return render(request, 'myapp/reports.html')  # Fixed template path
+
+
+
+# MentorshipPostForm
+
+
+def create_mentorship_post(request):
+    if request.method == 'POST':
+        form = MentorshipPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('mentorship_posts')  # Update with your URL name
+    else:
+        form = MentorshipPostForm()
+    return render(request, 'myapp/mentorship/create_post.html', {'form': form})
+
+
+    from .models import MentorshipPost
+
+def mentorship_posts(request):
+    posts = MentorshipPost.objects.all().order_by('-timestamp')  # newest first
+    return render(request, 'myapp/mentorship/posts.html', {'posts': posts})
+
+
+
+def send_request(request):
+    if request.method == 'POST':
+        mentor = request.POST.get('mentor')
+        student = request.user.username  # works if user is logged in
+        message = request.POST.get('message')
+        
+        # Create a new mentorship request
+        MentorshipRequest.objects.create(
+            mentor=mentor,
+            student=student,
+            message=message,
+            status='pending'
+        )
+
+        return redirect('mentorship_posts')  # back to mentorship post list
+    return redirect('home')  # fallback
